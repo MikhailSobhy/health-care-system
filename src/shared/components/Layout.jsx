@@ -5,8 +5,9 @@ import { Outlet } from "react-router-dom";
 export default function Layout() {
   return (
     <>
-      <Navbar />
-      <Outlet />
+      <div className="bg-[#131619] min-h-screen">
+          <Outlet />
+      </div>
     </>
   );
 }
