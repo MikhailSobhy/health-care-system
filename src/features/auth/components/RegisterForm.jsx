@@ -14,6 +14,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { registerSchema } from "@/shared/utils/validationSchemas";
 import { Link } from "react-router-dom";
+import CustomInput from "@/shared/components/CustomInput";
 
 export default function RegisterForm() {
   const form = useForm({
@@ -21,7 +22,7 @@ export default function RegisterForm() {
     defaultValues: {
       email: "",
       password: "",
-      confirmPassword:""
+      confirmPassword: "",
     },
   });
   function handleSubmit(values) {
@@ -31,87 +32,30 @@ export default function RegisterForm() {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-8">
-        <FormField
-          control={form.control}
-          name="email"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel className={"text-white md:text-gray-400"}>Email address</FormLabel>
-              <FormControl>
-                <div className="relative">
-                  <img
-                    src={MailIcon}
-                    alt="mail icon"
-                    className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 opacity-70"
-                  />
-
-                  <Input
-                    type="email"
-                    placeholder="Enter your email address"
-                    className="pl-10 text-white bg-[#1A1D21] border border-gray-600 focus-visible:border-[#24AE7C] selection:bg-[#24AE7C] selection:text-white"
-                    {...field}
-                  />
-                </div>
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
+        <CustomInput
+          form
+          name={"email"}
+          label={"Email address"}
+          type="email"
+          placeholder="Enter your email address"
+          src={MailIcon}
         />
-        <FormField
-          control={form.control}
-          name="password"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel className={"text-white md:text-gray-400"}>Password</FormLabel>
-              <FormControl>
-                <div className="relative">
-                  <img
-                    src={PasswordIcon}
-                    alt="Password Icon"
-                    className="absolute left-3 w-5 h-5 opacity-70 -translate-y-1/2 top-1/2"
-                  />
-                  <Input
-                    type={"password"}
-                    placeholder="Enter your password"
-                    className={
-                      "text-white bg-[#1A1D21] border border-gray-600 focus-visible:border-[#24AE7C] selection:bg-[#24AE7C] pl-10"
-                    }
-                    {...field}
-                  />
-                </div>
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
+        <CustomInput
+          form
+          name={"password"}
+          label={"Password"}
+          type="password"
+          placeholder="Enter your password"
+          src={PasswordIcon}
         />
-        <FormField
-          control={form.control}
-          name='confirmPassword'
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel className={"text-white md:text-gray-400"}>Confirm password</FormLabel>
-              <FormControl>
-                <div className="relative">
-                  <img
-                    src={PasswordIcon}
-                    alt="Password Icon"
-                    className="absolute left-3 w-5 h-5 opacity-70 -translate-y-1/2 top-1/2"
-                  />
-                  <Input
-                    type={"password"}
-                    placeholder="Confirm your password"
-                    className={
-                      "text-white bg-[#1A1D21] border border-gray-600 focus-visible:border-[#24AE7C] selection:bg-[#24AE7C] pl-10"
-                    }
-                    {...field}
-                  />
-                </div>
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
+        <CustomInput
+          form
+          name={"confirmPassword"}
+          label={"Confirm password"}
+          type="password"
+          placeholder="Confirm your password"
+          src={PasswordIcon}
         />
-
         <Button
           type="submit"
           className={"w-full bg-[#24AE7C] cursor-pointer hover:bg-[#1c8b63]"}

@@ -6,6 +6,7 @@ import Register from "./features/auth/pages/Register";
 import AdminDashboard from "./features/dashboard/pages/AdminDashboard";
 import UserDashboard from "./features/dashboard/pages/UserDashboard";
 import { ToastContainer } from "react-toastify";
+import User from "./features/profile/pages/User";
 export default function App() {
   const routes = createBrowserRouter([
     {
@@ -16,6 +17,7 @@ export default function App() {
         { path: "/register", element: <Register /> },
         { path: "/admin-dashboard", element: <AdminDashboard /> },
         { path: "/user-dashboard", element: <UserDashboard /> },
+        { path: "/profile", element: <User /> },
       ],
     },
   ]);

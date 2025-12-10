@@ -14,6 +14,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { loginSchema } from "@/shared/utils/validationSchemas";
 import { Link } from "react-router-dom";
+import CustomInput from "@/shared/components/CustomInput";
 
 export default function LoginForm() {
   const form = useForm({
@@ -30,58 +31,21 @@ export default function LoginForm() {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-8">
-        <FormField
-          control={form.control}
-          name="email"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel className={"text-white"}>Email address</FormLabel>
-              <FormControl>
-                <div className="relative">
-                  <img
-                    src={MailIcon}
-                    alt="mail icon"
-                    className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 opacity-70"
-                  />
-
-                  <Input
-                    type="email"
-                    placeholder="Enter your email address"
-                    className="pl-10 text-white bg-[#1A1D21] border border-gray-600 focus-visible:border-[#24AE7C] selection:bg-[#24AE7C] selection:text-white"
-                    {...field}
-                  />
-                </div>
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
+        <CustomInput
+          form
+          name={"email"}
+          label={"Email address"}
+          type="email"
+          placeholder="Enter your email address"
+          src={MailIcon}
         />
-        <FormField
-          control={form.control}
-          name="password"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel className={"text-white"}>Password</FormLabel>
-              <FormControl>
-                <div className="relative">
-                  <img
-                    src={PasswordIcon}
-                    alt="Password Icon"
-                    className="absolute left-3 w-5 h-5 opacity-70 -translate-y-1/2 top-1/2"
-                  />
-                  <Input
-                    type={"password"}
-                    placeholder="Enter your password"
-                    className={
-                      "text-white bg-[#1A1D21] border border-gray-600 focus-visible:border-[#24AE7C] selection:bg-[#24AE7C] pl-10"
-                    }
-                    {...field}
-                  />
-                </div>
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
+        <CustomInput
+          form
+          name={"password"}
+          label={"Password"}
+          type="password"
+          placeholder="Enter your password"
+          src={PasswordIcon}
         />
 
         <Button
